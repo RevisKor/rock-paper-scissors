@@ -2,6 +2,10 @@ const choices = ["rock", "paper", "scissors"];
 const humanScore = 0;
 const computerScore = 0;
 
+const choiceRock = document.createElement("button");
+const choicePaper = document.createElement("button");
+const choiceScissors = document.createElement("button");
+
 function getComputerChoice() {
     // Returns an index from (0-2) to get a choice from choices
     return choices[Math.floor(Math.random() * 3)];
@@ -34,18 +38,8 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        console.log(playRound(getHumanChoice(), getComputerChoice()));
-    }
+// Event listeners
+choiceRock.addEventListener("click", playRound("rock", computerChoice()));
+choicePaper.addEventListener("click", playRound("paper", computerChoice()));
+choiceScissors.addEventListener("click", playRound("scissors", computerChoice()));
 
-    if (humanScore > computerScore) {
-        console.log("You win the game!");
-
-    } else if (computerScore > humanScore){
-        console.log("You lose the game!");
-        
-    } else {
-        console.log("It's a tie");
-    }
-}
