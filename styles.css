@@ -78,3 +78,29 @@ button:hover {
 .getComputerChoice {
     font-weight:  bold;
 }
+
+.results {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.roundWinner {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.gameInfo {
+    font-size: 1.25rem;
+}
+
+.gameWinner {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.restartButton {
+    display: none;
+    font-size: 2em;
+}
