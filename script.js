@@ -2,19 +2,22 @@ const choices = ["rock", "paper", "scissors"];
 const humanScore = 0;
 const computerScore = 0;
 
-const choiceRock = document.createElement("button");
-const choicePaper = document.createElement("button");
-const choiceScissors = document.createElement("button");
+const main = document.querySelector(".main");
+const choiceRock = document.querySelector(".choiceRock");
+const choicePaper = document.querySelector(".choicePaper");
+const choiceScissors = document.querySelector(".choiceScissors");
+const computerChoiceBox = document.querySelector(".getComputerChoice")
 
+const results = document.createElement("div");
+const roundInfo = document.createElement("div");
+const roundWinner = document.createElement("div");
+const gameInfo = document.createElement("div");
+const gameWinner = document.createElement("div");
+ 
+// Functions
 function getComputerChoice() {
     // Returns an index from (0-2) to get a choice from choices
     return choices[Math.floor(Math.random() * 3)];
-}
-
-function getHumanChoice() {
-    // Get the users choice then lowercase it 
-    const choice = prompt("What is your choice?: (rock - paper - scissors)");
-    return choice.toLowerCase();
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -38,8 +41,20 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-// Event listeners
-choiceRock.addEventListener("click", playRound("rock", computerChoice()));
-choicePaper.addEventListener("click", playRound("paper", computerChoice()));
-choiceScissors.addEventListener("click", playRound("scissors", computerChoice()));
+function handleChoice(humanChoice) {
+    const computerChoice = getComputerChoice();
 
+    computerChoiceBox.textContent = computerChoice;
+
+    const result = playRound(humanChoice, computerChoice);
+
+    roundWinner.textContent = result;
+
+    results.appendChild(roundWinner);
+    main.appendChild(results);
+}
+
+// Event listeners
+choiceRock.addEventListener("click", () => {handleChoice("rock")});
+choicePaper.addEventListener("click", () => {handleChoice("paper")});
+choiceScissors.addEventListener("click", () => {handleChoice("scissors")});
