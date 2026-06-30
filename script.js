@@ -26,8 +26,26 @@ function playRound(humanChoice, computerChoice) {
         (humanChoice === "scissors" && computerChoice === "paper")
     ) {
         return `You win! ${humanChoice} beats ${computerChoice}.`;
+        humanScore++;
     } else {
         // 3. Fallback: If it's not a tie and human didn't win, computer won
         return `You lose! ${computerChoice} beats ${humanChoice}.`;
+        computerScore++;
+    }
+}
+
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        console.log(playRound(getHumanChoice(), getComputerChoice()));
+    }
+
+    if (humanScore > computerScore) {
+        console.log("You win the game!");
+
+    } else if (computerScore > humanScore){
+        console.log("You lose the game!");
+        
+    } else {
+        console.log("It's a tie");
     }
 }
